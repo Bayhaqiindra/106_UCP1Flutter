@@ -36,3 +36,14 @@ class _LoginPageState extends State<LoginPage> {
                       width: 100,
                     ),
                   ),
+
+                  const Text(
+                    'SELAMAT DATANG KEMBALI',
+                    style: TextStyle(
+                      fontSize: 24,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                  const SizedBox(height: 40),
