@@ -60,4 +60,23 @@ class _LoginPageState extends State<LoginPage> {
                       borderRadius: BorderRadius.circular(8),
                       border: Border.all(color: Colors.grey[300]!, width: 1),
                     ),
-
+                    child: TextFormField(
+                      controller: emailController,
+                      decoration: const InputDecoration(
+                        border: InputBorder.none,
+                        contentPadding: EdgeInsets.symmetric(
+                          horizontal: 16,
+                          vertical: 14,
+                        ),
+                        prefixIcon: Icon(Icons.email, color: Colors.grey),
+                      ),
+                      style: const TextStyle(fontSize: 14),
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Please enter your email';
+                        }
+                        return null;
+                      },
+                    ),
+                  ),
+                  const SizedBox(height: 20),
