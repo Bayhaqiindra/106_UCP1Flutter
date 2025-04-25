@@ -80,3 +80,50 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                   ),
                   const SizedBox(height: 20),
+
+                  // Password Field
+                  Text(
+                    'Password',
+                    style: TextStyle(color: Colors.grey[700], fontSize: 14),
+                  ),
+                  const SizedBox(height: 8),
+                  Container(
+                    decoration: BoxDecoration(
+                      color: Colors.grey[100],
+                      borderRadius: BorderRadius.circular(8),
+                      border: Border.all(color: Colors.grey[300]!, width: 1),
+                    ),
+                    child: TextFormField(
+                      controller: passwordController,
+                      decoration: InputDecoration(
+                        border: InputBorder.none,
+                        contentPadding: const EdgeInsets.symmetric(
+                          horizontal: 16,
+                          vertical: 14,
+                        ),
+                        prefixIcon: const Icon(Icons.lock, color: Colors.grey),
+                        suffixIcon: IconButton(
+                          icon: Icon(
+                            _obscurePassword
+                                ? Icons.visibility_off
+                                : Icons.visibility,
+                            color: Colors.grey,
+                          ),
+                          onPressed: () {
+                            setState(() {
+                              _obscurePassword = !_obscurePassword;
+                            });
+                          },
+                        ),
+                      ),
+                      obscureText: _obscurePassword,
+                      style: const TextStyle(fontSize: 14),
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Please enter your password';
+                        }
+                        return null;
+                      },
+                    ),
+                  ),
+                  const SizedBox(height: 30),
