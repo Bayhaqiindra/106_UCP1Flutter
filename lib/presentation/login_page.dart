@@ -155,3 +155,30 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                   ),
                   const SizedBox(height: 20),
+
+                  // Register Text
+                  Center(
+                    child: TextButton(
+                      onPressed: () {
+                        // Navigator.push(
+                        //   context,
+                        //   MaterialPageRoute(
+                        //     builder: (context) => const RegisterPage(),
+                        //   ),
+                        // );
+                      },
+                      child: Text(
+                        'Belum memiliki akun? Silahkan Daftar disini!',
+                        style: TextStyle(fontSize: 14, color: Colors.blue[600]),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
