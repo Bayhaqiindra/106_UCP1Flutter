@@ -49,82 +49,74 @@ class _LoginPageState extends State<LoginPage> {
                   const SizedBox(height: 40),
 
                   // Email Field
-                  Text(
-                    'Email',
-                    style: TextStyle(color: Colors.grey[700], fontSize: 14),
-                  ),
-                  const SizedBox(height: 8),
-                  Container(
-                    decoration: BoxDecoration(
-                      color: Colors.grey[100],
-                      borderRadius: BorderRadius.circular(8),
-                      border: Border.all(color: Colors.grey[300]!, width: 1),
-                    ),
-                    child: TextFormField(
-                      controller: emailController,
-                      decoration: const InputDecoration(
-                        border: InputBorder.none,
-                        contentPadding: EdgeInsets.symmetric(
-                          horizontal: 16,
-                          vertical: 14,
-                        ),
-                        prefixIcon: Icon(Icons.email, color: Colors.grey),
+                  TextFormField(
+                    controller: emailController,
+                    decoration: InputDecoration(
+                      label: const Text('Email'),
+                      hintText: 'Masukkan email Anda',
+                      prefixIcon: const Icon(Icons.email, color: Colors.grey),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(8),
+                        borderSide: BorderSide(color: Colors.grey[300]!),
                       ),
-                      style: const TextStyle(fontSize: 14),
-                      validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return 'Please enter your email';
-                        }
-                        return null;
-                      },
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(8),
+                        borderSide: BorderSide(color: Colors.grey[300]!),
+                      ),
+                      filled: true,
+                      fillColor: Colors.grey[100],
                     ),
+                    style: const TextStyle(fontSize: 14),
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Email tidak boleh kosong';
+                      }
+                      return null;
+                    },
+                    autovalidateMode: AutovalidateMode.onUserInteraction,
                   ),
                   const SizedBox(height: 20),
 
                   // Password Field
-                  Text(
-                    'Password',
-                    style: TextStyle(color: Colors.grey[700], fontSize: 14),
-                  ),
-                  const SizedBox(height: 8),
-                  Container(
-                    decoration: BoxDecoration(
-                      color: Colors.grey[100],
-                      borderRadius: BorderRadius.circular(8),
-                      border: Border.all(color: Colors.grey[300]!, width: 1),
-                    ),
-                    child: TextFormField(
-                      controller: passwordController,
-                      decoration: InputDecoration(
-                        border: InputBorder.none,
-                        contentPadding: const EdgeInsets.symmetric(
-                          horizontal: 16,
-                          vertical: 14,
+                  TextFormField(
+                    controller: passwordController,
+                    decoration: InputDecoration(
+                      label: const Text('Password'),
+                      hintText: 'Masukkan password Anda',
+                      prefixIcon: const Icon(Icons.lock, color: Colors.grey),
+                      suffixIcon: IconButton(
+                        icon: Icon(
+                          _obscurePassword
+                              ? Icons.visibility_off
+                              : Icons.visibility,
+                          color: Colors.grey,
                         ),
-                        prefixIcon: const Icon(Icons.lock, color: Colors.grey),
-                        suffixIcon: IconButton(
-                          icon: Icon(
-                            _obscurePassword
-                                ? Icons.visibility_off
-                                : Icons.visibility,
-                            color: Colors.grey,
-                          ),
-                          onPressed: () {
-                            setState(() {
-                              _obscurePassword = !_obscurePassword;
-                            });
-                          },
-                        ),
+                        onPressed: () {
+                          setState(() {
+                            _obscurePassword = !_obscurePassword;
+                          });
+                        },
                       ),
-                      obscureText: _obscurePassword,
-                      style: const TextStyle(fontSize: 14),
-                      validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return 'Please enter your password';
-                        }
-                        return null;
-                      },
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(13),
+                        borderSide: BorderSide(color: Colors.grey[300]!),
+                      ),
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(13),
+                        borderSide: BorderSide(color: Colors.grey[300]!),
+                      ),
+                      filled: true,
+                      fillColor: Colors.grey[100],
                     ),
+                    obscureText: _obscurePassword,
+                    style: const TextStyle(fontSize: 14),
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Password tidak boleh kosong';
+                      }
+                      return null;
+                    },
+                    autovalidateMode: AutovalidateMode.onUserInteraction,
                   ),
                   const SizedBox(height: 30),
 
@@ -169,7 +161,10 @@ class _LoginPageState extends State<LoginPage> {
                       },
                       child: Text(
                         'Belum memiliki akun? Silahkan Daftar disini!',
-                        style: TextStyle(fontSize: 14, color: Colors.blue[600]),
+                        style: TextStyle(
+                          fontSize: 14,
+                          color: const Color.fromARGB(255, 0, 0, 0),
+                        ),
                       ),
                     ),
                   ),
