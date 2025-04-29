@@ -174,5 +174,49 @@ class _DataPiketPageState extends State<DataPiketPage> {
                         ),
                       ),
                     ),
-
                     const SizedBox(width: 12),
+
+                    // Tombol Tambah
+                    Expanded(
+                      flex: 5,
+                      child: SizedBox(
+                        height: 50,
+                        child: ElevatedButton(
+                          onPressed: () {
+                            _validateInputs();
+                            if (taskError != null) {
+                              return;
+                            }
+
+                            setState(() {
+                              taskList.add({
+                                'task': taskController.text,
+                                'date':
+                                    '${selectedDate!.day}/${selectedDate!.month}/${selectedDate!.year}',
+                                'user': nameController.text,
+                              });
+                              taskController.clear();
+                              selectedDate = null;
+                            });
+                          },
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: const Color(0xFFFF3D00),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(16),
+                            ),
+                            elevation: 0,
+                          ),
+                          child: const Text(
+                            'Tambah',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 16,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+
