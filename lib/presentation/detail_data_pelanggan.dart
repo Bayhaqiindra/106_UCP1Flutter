@@ -88,3 +88,61 @@ class DetailPelangganPage extends StatelessWidget {
               style: const TextStyle(fontSize: 16, color: Colors.black54),
             ),
             const SizedBox(height: 32),
+
+            // Alamat
+            Align(
+              alignment: Alignment.centerLeft,
+              child: const Text(
+                'Alamat',
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
+            ),
+            const SizedBox(height: 8),
+            TextField(
+              controller: TextEditingController(text: alamat),
+              readOnly: true,
+              decoration: buildInputDecoration('Alamat'),
+            ),
+            const SizedBox(height: 16),
+
+            // Provinsi dan Kode Pos
+            Row(
+              children: [
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Text(
+                        'Provinsi',
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                      const SizedBox(height: 8),
+                      TextField(
+                        controller: TextEditingController(text: provinsi),
+                        readOnly: true,
+                        decoration: buildInputDecoration('Provinsi'),
+                      ),
+                    ],
+                  ),
+                ),
+                const SizedBox(width: 16),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Text(
+                        'Kode Pos',
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                      const SizedBox(height: 8),
+                      TextField(
+                        controller: TextEditingController(text: kodePos),
+                        readOnly: true,
+                        decoration: buildInputDecoration('Kode Pos'),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 32),
