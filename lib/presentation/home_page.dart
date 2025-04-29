@@ -51,3 +51,29 @@ class HomePage extends StatelessWidget {
             ),
           ],
         ),
+        actions: [
+  IconButton(
+    onPressed: () {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => const LoginPage()),
+      );
+    },
+    icon: const Icon(Icons.logout, color: Colors.white),
+  ),
+],
+      ),
+      body: SingleChildScrollView(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          children: [
+            _buildBannerPromo(),
+            const SizedBox(height: 20),
+            _buildMenuSection(context, displayText),
+            const SizedBox(height: 20),
+            _buildBarangSection(context),
+          ],
+        ),
+      ),
+    );
+  }
