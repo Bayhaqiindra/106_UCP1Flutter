@@ -17,3 +17,16 @@ class _DataPelangganPageState extends State<DataPelangganPage> {
   final TextEditingController kodePosController = TextEditingController();
 
   bool _autoValidate = false;
+
+  void resetForm() {
+    namaController.clear();
+    emailController.clear();
+    hpController.clear();
+    alamatController.clear();
+    provinsiController.clear();
+    kodePosController.clear();
+    _formKey.currentState?.reset();
+    setState(() {
+      _autoValidate = false; // Reset autovalidasi juga
+    });
+  }
