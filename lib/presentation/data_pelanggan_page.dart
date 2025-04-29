@@ -56,3 +56,37 @@ class _DataPelangganPageState extends State<DataPelangganPage> {
       ),
     );
   }
+
+  Widget buildTextField({
+    required String label,
+    required TextEditingController controller,
+    required String errorMsg,
+  }) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(label, style: const TextStyle(fontWeight: FontWeight.bold)),
+        const SizedBox(height: 8),
+        TextFormField(
+          controller: controller,
+          decoration: buildInputDecoration(label),
+          autovalidateMode:
+              _autoValidate
+                  ? AutovalidateMode.always
+                  : AutovalidateMode.disabled,
+          validator: (value) {
+            if (value == null || value.isEmpty) {
+              return errorMsg;
+            }
+            return null;
+          },
+          onChanged: (value) {
+            if (_autoValidate) {
+              _formKey.currentState
+                  ?.validate(); // kalau sudah autoValidate, realtime cek
+            }
+          },
+        ),
+      ],
+    );
+  }
