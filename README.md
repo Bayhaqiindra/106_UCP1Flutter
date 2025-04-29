@@ -25,8 +25,4 @@
 </p>
 
 <h3>📹 Link Record</h3>
-
-<p>
-  <a href="https://drive.google.com/drive/folders/1ZsbLvK_oGpM9Ffs6ULrPZxfn-fttTDOD?usp=sharing" style="font-size: 18px; font-weight: bold;" target="_blank">
-  </a>
-</p>
+https://drive.google.com/drive/folders/1ZsbLvK_oGpM9Ffs6ULrPZxfn-fttTDOD?usp=sharing
