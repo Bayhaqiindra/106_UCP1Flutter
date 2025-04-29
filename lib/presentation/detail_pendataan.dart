@@ -17,3 +17,16 @@ class DetailPendataanPage extends StatelessWidget {
     required this.hargaSatuan,
     required this.totalHarga,
   }) : super(key: key);
+
+    Widget buildDataRow(String title, String value) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 8),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Text(title, style: const TextStyle(fontWeight: FontWeight.bold)),
+          Text(value),
+        ],
+      ),
+    );
+  }
