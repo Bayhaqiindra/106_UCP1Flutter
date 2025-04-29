@@ -220,3 +220,78 @@ class _DataPiketPageState extends State<DataPiketPage> {
                   ],
                 ),
 
+                // Error validation text
+                if (taskError != null)
+                  Padding(
+                    padding: const EdgeInsets.only(top: 8, left: 8),
+                    child: Text(
+                      taskError!,
+                      style: const TextStyle(color: Colors.red, fontSize: 12),
+                    ),
+                  ),
+              ],
+            ),
+
+            const SizedBox(height: 30),
+
+            Center(
+              child: const Text(
+                'Daftar Tugas Piket',
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+              ),
+            ),
+            const SizedBox(height: 20),
+            taskList.isNotEmpty
+                ? Column(
+                    crossAxisAlignment:
+                        CrossAxisAlignment.start, // Aligning to start (left)
+                    children: taskList.map((task) {
+                      return GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => TaskDetailPage(
+                                taskTitle: task['task']!,
+                                taskDate: task['date']!,
+                                userName: task['user']!,
+                              ),
+                            ),
+                          );
+                        },
+                        child: Card(
+                          color: const Color(
+                            0xFFFF3D00,
+                          ), // Set background color to orange
+                          margin: const EdgeInsets.only(bottom: 8),
+                          child: ListTile(
+                            title: Text(
+                              task['task']!,
+                              style: const TextStyle(
+                                color: Colors.white,
+                              ), // Text color white
+                            ),
+                            trailing: const Icon(
+                              Icons.arrow_forward_ios, // Right arrow icon
+                              color: Colors.white, // Icon color white
+                            ),
+                          ),
+                        ),
+                      );
+                    }).toList(),
+                  )
+                : Padding(
+                    padding: const EdgeInsets.only(top: 60),
+                    child: const Center(
+                      child: Text(
+                        'Belum ada Tugas Piket',
+                        style: TextStyle(fontSize: 16, color: Colors.grey),
+                      ),
+                    ),
+                  ),
+          ],
+        ),
+      ),
+    );
+  }
+}
