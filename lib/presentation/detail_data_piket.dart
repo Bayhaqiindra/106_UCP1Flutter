@@ -11,3 +11,13 @@ class TaskDetailPage extends StatelessWidget {
     required this.taskDate,
     required this.userName,
   });
+
+@override
+  Widget build(BuildContext context) {
+    initializeDateFormatting('id_ID', null);
+
+    DateTime parsedDate = DateFormat('d/M/yyyy').parse(taskDate);
+    String formattedDate = DateFormat(
+      'EEEE, dd MMMM yyyy',
+      'id_ID',
+    ).format(parsedDate);
