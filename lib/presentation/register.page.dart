@@ -37,3 +37,20 @@ class _RegisterPageState extends State<RegisterPage> {
       ),
     );
   }
+
+    InputDecoration _inputDecoration(String hint, IconData icon) {
+    return InputDecoration(
+      hintText: hint,
+      prefixIcon: Icon(icon),
+      border: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(13),
+        borderSide: const BorderSide(color: Colors.grey),
+      ),
+      enabledBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(13),
+        borderSide: const BorderSide(color: Colors.grey),
+      ),
+      filled: true,
+      fillColor: Colors.white,
+    );
+  }
