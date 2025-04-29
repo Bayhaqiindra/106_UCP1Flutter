@@ -128,5 +128,105 @@ Future<void> _selectDate() async {
                   return null;
                 },
               ),
-
               const SizedBox(height: 16),
+
+              DropdownButtonFormField<String>(
+                value: jenisTransaksi,
+                items: const [
+                  DropdownMenuItem(
+                    value: 'Barang Masuk',
+                    child: Text('Barang Masuk'),
+                  ),
+                  DropdownMenuItem(
+                    value: 'Barang Keluar',
+                    child: Text('Barang Keluar'),
+                  ),
+                ],
+                onChanged: (value) {
+                  setState(() {
+                    jenisTransaksi = value;
+                  });
+                },
+                decoration: buildInputDecoration('Jenis Transaksi'),
+                validator:
+                    (value) => value == null ? 'Pilih jenis transaksi' : null,
+              ),
+              const SizedBox(height: 16),
+              DropdownButtonFormField<String>(
+                value: jenisBarang,
+                items: const [
+                  DropdownMenuItem(value: 'Carrier', child: Text('Carrier')),
+                  DropdownMenuItem(
+                    value: 'Sleeping Bag',
+                    child: Text('Sleeping Bag'),
+                  ),
+                  DropdownMenuItem(value: 'Tenda', child: Text('Tenda')),
+                  DropdownMenuItem(value: 'Sepatu', child: Text('Sepatu')),
+                ],
+                onChanged: (value) {
+                  setState(() {
+                    jenisBarang = value;
+                    hargaSatuanController.text = hargaBarang[value].toString();
+                  });
+                },
+                decoration: buildInputDecoration('Jenis Barang'),
+                validator:
+                    (value) => value == null ? 'Pilih jenis barang' : null,
+              ),
+              const SizedBox(height: 16),
+              Row(
+                children: [
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const Text(
+                          'Jumlah Barang',
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                        const SizedBox(height: 8),
+                        TextFormField(
+                          controller: jumlahBarangController,
+                          keyboardType: TextInputType.number,
+                          decoration: buildInputDecoration('Jumlah Barang'),
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Jumlah barang wajib diisi';
+                            }
+                            return null;
+                          },
+                        ),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(width: 16),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const Text(
+                          'Harga Satuan',
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                        const SizedBox(height: 8),
+                        TextFormField(
+                          controller: hargaSatuanController,
+                          keyboardType: TextInputType.number,
+                          readOnly: true,
+                          decoration: buildInputDecoration(
+                            'Harga Satuan',
+                            prefixText: 'Rp. ',
+                          ),
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Harga satuan wajib diisi';
+                            }
+                            return null;
+                          },
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 32),
