@@ -120,3 +120,52 @@ class _DataPelangganPageState extends State<DataPelangganPage> {
                 errorMsg: 'Cust tidak boleh kosong',
               ),
               const SizedBox(height: 16),
+
+              Row(
+                children: [
+                  Expanded(
+                    child: buildTextField(
+                      label: 'Email',
+                      controller: emailController,
+                      errorMsg: 'Email tidak boleh kosong',
+                    ),
+                  ),
+                  const SizedBox(width: 16),
+                  Expanded(
+                    child: buildTextField(
+                      label: 'No Hp',
+                      controller: hpController,
+                      errorMsg: 'No Hp tidak boleh kosong',
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 16),
+
+              buildTextField(
+                label: 'Alamat',
+                controller: alamatController,
+                errorMsg: 'Alamat tidak boleh kosong',
+              ),
+              const SizedBox(height: 16),
+
+              Row(
+                children: [
+                  Expanded(
+                    child: buildTextField(
+                      label: 'Provinsi',
+                      controller: provinsiController,
+                      errorMsg: 'Provinsi tidak boleh kosong',
+                    ),
+                  ),
+                  const SizedBox(width: 16),
+                  Expanded(
+                    child: buildTextField(
+                      label: 'Kode Pos',
+                      controller: kodePosController,
+                      errorMsg: 'Kode Pos tidak boleh kosong',
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 32),
