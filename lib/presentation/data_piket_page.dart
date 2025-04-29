@@ -246,7 +246,7 @@ class _DataPiketPageState extends State<DataPiketPage> {
             taskList.isNotEmpty
                 ? Column(
                     crossAxisAlignment:
-                        CrossAxisAlignment.start, // Aligning to start (left)
+                        CrossAxisAlignment.start,
                     children: taskList.map((task) {
                       return GestureDetector(
                         onTap: () {
@@ -264,18 +264,18 @@ class _DataPiketPageState extends State<DataPiketPage> {
                         child: Card(
                           color: const Color(
                             0xFFFF3D00,
-                          ), // Set background color to orange
+                          ),
                           margin: const EdgeInsets.only(bottom: 8),
                           child: ListTile(
                             title: Text(
                               task['task']!,
                               style: const TextStyle(
                                 color: Colors.white,
-                              ), // Text color white
+                              ),
                             ),
                             trailing: const Icon(
-                              Icons.arrow_forward_ios, // Right arrow icon
-                              color: Colors.white, // Icon color white
+                              Icons.arrow_forward_ios, 
+                              color: Colors.white, 
                             ),
                           ),
                         ),
