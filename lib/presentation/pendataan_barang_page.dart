@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
+import 'package:ucp/presentation/detail_pendataan.dart';
 
 class BarangPage extends StatefulWidget {
   const BarangPage({Key? key}) : super(key: key);
@@ -23,45 +25,45 @@ class _BarangPageState extends State<BarangPage> {
   };
 
   InputDecoration buildInputDecoration(
-  String hintText, {
-  Widget? prefixIcon,
-  Widget? prefix,
-  String? prefixText,
-}) {
-  return InputDecoration(
-    hintText: hintText,
-    prefixIcon: prefixIcon,
-    prefix: prefix,
-    prefixText: prefixText,
-    prefixStyle: const TextStyle(color: Colors.black),
-    hintStyle: const TextStyle(color: Colors.black54),
-    filled: true,
-    fillColor: Colors.white,
-    contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
-    border: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(20),
-      borderSide: const BorderSide(color: Colors.black26),
-    ),
-    enabledBorder: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(20),
-      borderSide: const BorderSide(color: Colors.black26),
-    ),
-    focusedBorder: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(20),
-      borderSide: const BorderSide(color: Colors.black54),
-    ),
-    errorBorder: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(20),
-      borderSide: const BorderSide(color: Colors.red),
-    ),
-    focusedErrorBorder: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(20),
-      borderSide: const BorderSide(color: Colors.red),
-    ),
-  );
-}
+    String hintText, {
+    Widget? prefixIcon,
+    Widget? prefix,
+    String? prefixText,
+  }) {
+    return InputDecoration(
+      hintText: hintText,
+      prefixIcon: prefixIcon,
+      prefix: prefix,
+      prefixText: prefixText,
+      prefixStyle: const TextStyle(color: Colors.black),
+      hintStyle: const TextStyle(color: Colors.black54),
+      filled: true,
+      fillColor: Colors.white,
+      contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
+      border: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(20),
+        borderSide: const BorderSide(color: Colors.black26),
+      ),
+      enabledBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(20),
+        borderSide: const BorderSide(color: Colors.black26),
+      ),
+      focusedBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(20),
+        borderSide: const BorderSide(color: Colors.black54),
+      ),
+      errorBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(20),
+        borderSide: const BorderSide(color: Colors.red),
+      ),
+      focusedErrorBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(20),
+        borderSide: const BorderSide(color: Colors.red),
+      ),
+    );
+  }
 
-Future<void> _selectDate() async {
+  Future<void> _selectDate() async {
     final DateTime? picked = await showDatePicker(
       context: context,
       initialDate: selectedDate ?? DateTime.now(),
@@ -230,3 +232,52 @@ Future<void> _selectDate() async {
                 ],
               ),
               const SizedBox(height: 32),
+              SizedBox(
+                width: double.infinity,
+                height: 50,
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.red,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(24),
+                    ),
+                  ),
+                  onPressed: () {
+                    if (_formKey.currentState!.validate()) {
+                      int jumlahBarang =
+                          int.tryParse(jumlahBarangController.text) ?? 0;
+                      int hargaSatuan =
+                          int.tryParse(hargaSatuanController.text) ?? 0;
+                      int totalHarga = jumlahBarang * hargaSatuan;
+
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder:
+                              (context) => DetailPendataanPage(
+                                tanggal: selectedDate!,
+                                jenisTransaksi: jenisTransaksi!,
+                                jenisBarang: jenisBarang!,
+                                jumlahBarang: jumlahBarang,
+                                hargaSatuan: hargaSatuan,
+                                totalHarga: totalHarga,
+                              ),
+                        ),
+                      );
+                    }
+                  },
+
+                  child: const Text(
+                    'Submit',
+                    style: TextStyle(fontSize: 18, color: Colors.white),
+                  ),
+                ),
+              ),
+              const SizedBox(height: 24),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
