@@ -6,3 +6,14 @@ class DataPelangganPage extends StatefulWidget {
   @override
   _DataPelangganPageState createState() => _DataPelangganPageState();
 }
+
+class _DataPelangganPageState extends State<DataPelangganPage> {
+  final _formKey = GlobalKey<FormState>();
+  final TextEditingController namaController = TextEditingController();
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController hpController = TextEditingController();
+  final TextEditingController alamatController = TextEditingController();
+  final TextEditingController provinsiController = TextEditingController();
+  final TextEditingController kodePosController = TextEditingController();
+
+  bool _autoValidate = false;
