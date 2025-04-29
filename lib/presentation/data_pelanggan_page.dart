@@ -83,7 +83,7 @@ class _DataPelangganPageState extends State<DataPelangganPage> {
           onChanged: (value) {
             if (_autoValidate) {
               _formKey.currentState
-                  ?.validate(); // kalau sudah autoValidate, realtime cek
+                  ?.validate();
             }
           },
         ),
@@ -169,3 +169,43 @@ class _DataPelangganPageState extends State<DataPelangganPage> {
                 ],
               ),
               const SizedBox(height: 32),
+
+              // Tombol Simpan
+              SizedBox(
+                width: double.infinity,
+                height: 50,
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.red,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(16),
+                    ),
+                  ),
+                  onPressed: () {
+                    setState(() {
+                      _autoValidate = true; // Mulai autovalidasi
+                    });
+                    if (_formKey.currentState!.validate()) {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder:
+                              (context) => DetailPelangganPage(
+                                nama: namaController.text,
+                                email: emailController.text,
+                                hp: hpController.text,
+                                alamat: alamatController.text,
+                                provinsi: provinsiController.text,
+                                kodePos: kodePosController.text,
+                              ),
+                        ),
+                      );
+                    }
+                  },
+                  child: const Text(
+                    'Simpan',
+                    style: TextStyle(fontSize: 16, color: Colors.white),
+                  ),
+                ),
+              ),
+              const SizedBox(height: 16),
