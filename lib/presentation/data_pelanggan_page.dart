@@ -209,3 +209,29 @@ class _DataPelangganPageState extends State<DataPelangganPage> {
                 ),
               ),
               const SizedBox(height: 16),
+
+              // Tombol Reset
+              SizedBox(
+                width: double.infinity,
+                height: 50,
+                child: OutlinedButton(
+                  style: OutlinedButton.styleFrom(
+                    side: const BorderSide(color: Colors.red),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(16),
+                    ),
+                  ),
+                  onPressed: resetForm,
+                  child: const Text(
+                    'Reset',
+                    style: TextStyle(color: Colors.red, fontSize: 16),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
