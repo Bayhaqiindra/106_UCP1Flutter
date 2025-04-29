@@ -54,3 +54,37 @@ class _RegisterPageState extends State<RegisterPage> {
       fillColor: Colors.white,
     );
   }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: const Color(0xFFFEF8F6),
+      body: SafeArea(
+        child: SingleChildScrollView(
+          padding: const EdgeInsets.all(24.0),
+          child: Form(
+            key: _formKey,
+            child: Column(
+              children: [
+                const SizedBox(height: 40),
+
+                // Logo dan judul
+                Column(
+                  children: [
+                    Image.asset(
+                      './assets/images/logo.png',
+                      width: 100,
+                      height: 100,
+                    ),
+                    const SizedBox(height: 20),
+                    const Text(
+                      'DAFTAR AKUN BARU',
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black87,
+                      ),
+                    ),
+                    const SizedBox(height: 30),
+                  ],
+                ),
