@@ -77,3 +77,17 @@ class HomePage extends StatelessWidget {
       ),
     );
   }
+
+  Widget _buildBannerPromo() {
+    return Container(
+      width: double.infinity,
+      height: 150,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10),
+        image: const DecorationImage(
+          image: AssetImage('./assets/images/diskon.jpeg'),
+          fit: BoxFit.cover,
+        ),
+      ),
+    );
+  }
