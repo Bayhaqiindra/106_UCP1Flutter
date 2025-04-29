@@ -21,7 +21,7 @@ class _DataPiketPageState extends State<DataPiketPage> {
 @override
   void initState() {
     super.initState();
-    nameController.text = widget.name ?? 'User'; // Isi otomatis nama anggota
+    nameController.text = widget.name ?? 'User'; 
   }
 
   void _validateInputs() {
@@ -36,7 +36,6 @@ class _DataPiketPageState extends State<DataPiketPage> {
   Widget build(BuildContext context) {
     String formattedDate = '';
     if (selectedDate != null) {
-      // Menggunakan DateFormat dari package intl untuk format tanggal
       formattedDate = DateFormat('EEEE, dd MMMM yyyy', 'id_ID').format(selectedDate!);
     }
 
@@ -65,7 +64,7 @@ class _DataPiketPageState extends State<DataPiketPage> {
             const SizedBox(height: 8),
             TextFormField(
               controller: nameController,
-              readOnly: true, // Tidak bisa diedit
+              readOnly: true, 
               decoration: InputDecoration(
                 hintText: 'Nama Anggota',
                 border: OutlineInputBorder(
@@ -75,3 +74,68 @@ class _DataPiketPageState extends State<DataPiketPage> {
               ),
             ),
             const SizedBox(height: 16),
+
+            // Tanggal Picker
+            const Text(
+              'Pilih Tanggal',
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+            ),
+            const SizedBox(height: 8),
+            InkWell(
+              onTap: () async {
+                final date = await showDatePicker(
+                  context: context,
+                  initialDate: DateTime.now(),
+                  firstDate: DateTime(2000),
+                  lastDate: DateTime(2100),
+                );
+                if (date != null) {
+                  setState(() {
+                    selectedDate = date;
+                    dateError =
+                        null; 
+                  });
+                }
+              },
+              child: Container(
+                padding: const EdgeInsets.all(12),
+                decoration: BoxDecoration(
+                  border: Border.all(
+                    color:
+                        dateError != null
+                            ? Colors.red
+                            : Colors.grey,
+                  ),
+                  borderRadius: BorderRadius.circular(8),
+                ),
+                child: Row(
+                  children: [
+                    const Icon(Icons.calendar_today, size: 20),
+                    const SizedBox(width: 8),
+                    Text(
+                      selectedDate != null ? formattedDate : 'Pilih Tanggal',
+                      style: const TextStyle(fontSize: 16),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            if (dateError != null)
+              Padding(
+                padding: const EdgeInsets.only(top: 8),
+                child: Text(
+                  dateError!,
+                  style: const TextStyle(color: Colors.red, fontSize: 12),
+                ),
+              ),
+
+            const SizedBox(height: 24),
+
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Text(
+                  'Tugas Piket',
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                ),
+                const SizedBox(height: 8),
