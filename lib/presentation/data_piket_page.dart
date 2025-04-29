@@ -53,3 +53,25 @@ class _DataPiketPageState extends State<DataPiketPage> {
       ),
     ),
   ),
+  body: SingleChildScrollView(
+        padding: const EdgeInsets.all(16),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const Text(
+              'Nama Anggota',
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+            ),
+            const SizedBox(height: 8),
+            TextFormField(
+              controller: nameController,
+              readOnly: true, // Tidak bisa diedit
+              decoration: InputDecoration(
+                hintText: 'Nama Anggota',
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(8),
+                ),
+                contentPadding: const EdgeInsets.symmetric(horizontal: 12),
+              ),
+            ),
+            const SizedBox(height: 16),
