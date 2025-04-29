@@ -167,3 +167,42 @@ class HomePage extends StatelessWidget {
       ),
     );
   }
+
+  Widget _buildBarangSection(BuildContext context) {
+    return InkWell(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const BarangPage()),
+        );
+      },
+      child: Container(
+        height: 220,
+        width: double.infinity,
+        decoration: BoxDecoration(
+          color: Colors.red,
+          borderRadius: BorderRadius.circular(12),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.2),
+              spreadRadius: 2,
+              blurRadius: 4,
+              offset: const Offset(0, 2),
+            ),
+          ],
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: const [
+            Icon(Icons.move_to_inbox, size: 50, color: Colors.white),
+            SizedBox(height: 8),
+            Text(
+              'Barang Masuk/Keluar',
+              style: TextStyle(color: Colors.white, fontSize: 16),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
