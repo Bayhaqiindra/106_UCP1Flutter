@@ -90,3 +90,33 @@ class _DataPelangganPageState extends State<DataPelangganPage> {
       ],
     );
   }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: const Color.fromARGB(255, 255, 255, 255),
+      appBar: AppBar(
+        backgroundColor: Colors.red,
+        iconTheme: const IconThemeData(color: Colors.white),
+        centerTitle: true,
+        title: const Text(
+          'Data Pelanggan',
+          style: const TextStyle(
+            fontWeight: FontWeight.bold,
+            color: Colors.white,
+          ),
+        ),
+      ),
+      body: SingleChildScrollView(
+        padding: const EdgeInsets.all(16),
+        child: Form(
+          key: _formKey,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              buildTextField(
+                label: 'Nama Cust',
+                controller: namaController,
+                errorMsg: 'Cust tidak boleh kosong',
+              ),
+              const SizedBox(height: 16),
