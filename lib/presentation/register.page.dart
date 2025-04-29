@@ -38,7 +38,7 @@ class _RegisterPageState extends State<RegisterPage> {
     );
   }
 
-    InputDecoration _inputDecoration(String hint, IconData icon) {
+  InputDecoration _inputDecoration(String hint, IconData icon) {
     return InputDecoration(
       hintText: hint,
       prefixIcon: Icon(icon),
@@ -89,7 +89,6 @@ class _RegisterPageState extends State<RegisterPage> {
                   ],
                 ),
 
-                
                 // Nama Lengkap
                 Align(
                   alignment: Alignment.centerLeft,
@@ -270,8 +269,7 @@ class _RegisterPageState extends State<RegisterPage> {
                                 (context) =>
                                     HomePage(name: nameController.text),
                           ),
-                          (route) =>
-                              false, 
+                          (route) => false,
                         );
                       }
                     },
@@ -294,3 +292,41 @@ class _RegisterPageState extends State<RegisterPage> {
                   ),
                 ),
                 const SizedBox(height: 20),
+
+                // Sudah punya akun?
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Text('Sudah memiliki akun? '),
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.pop(context);
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const LoginPage(),
+                          ),
+                        );
+                      },
+                      child: const Text(
+                        'Login disini!',
+                        style: TextStyle(
+                          color: Colors.red,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildTextLabel(String text) {
+    return Text(text, style: const TextStyle(fontWeight: FontWeight.bold));
+  }
+}
