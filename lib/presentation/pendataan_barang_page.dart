@@ -74,3 +74,59 @@ Future<void> _selectDate() async {
       });
     }
   }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: const Color(0xFFFEF7F5),
+      appBar: AppBar(
+        backgroundColor: Colors.red,
+        elevation: 0,
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back, color: Colors.white),
+          onPressed: () => Navigator.of(context).pop(),
+        ),
+        title: const Text(
+          'Pendataan Barang',
+          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+        ),
+        centerTitle: true,
+      ),
+      body: SingleChildScrollView(
+        padding: const EdgeInsets.symmetric(horizontal: 24),
+        child: Form(
+          key: _formKey,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const SizedBox(height: 24),
+              const Text(
+                'Tanggal Transaksi',
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
+              const SizedBox(height: 8),
+              TextFormField(
+                readOnly: true,
+                decoration: buildInputDecoration(
+                  'Tanggal Transaksi',
+                  prefixIcon: const Icon(Icons.calendar_today),
+                ),
+                controller: TextEditingController(
+                  text:
+                      selectedDate != null
+                          ? DateFormat(
+                            'EEEE, dd MMMM yyyy',
+                            'id_ID',
+                          ).format(selectedDate!)
+                          : '',
+                ),
+                onTap: _selectDate,
+                validator: (value) {
+                  if (selectedDate == null) {
+                    return 'Tanggal wajib diisi';
+                  }
+                  return null;
+                },
+              ),
+
+              const SizedBox(height: 16),
