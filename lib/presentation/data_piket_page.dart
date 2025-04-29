@@ -139,3 +139,40 @@ class _DataPiketPageState extends State<DataPiketPage> {
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
                 ),
                 const SizedBox(height: 8),
+
+                // Input dan Tombol
+                Row(
+                  children: [
+                    // TextField
+                    Expanded(
+                      flex: 5,
+                      child: Container(
+                        height: 50,
+                        decoration: BoxDecoration(
+                          color: const Color.fromARGB(0, 255, 255, 255),
+                          border: Border.all(
+                            color: taskError != null ? Colors.red : Colors.grey,
+                          ),
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        child: TextFormField(
+                          controller: taskController,
+                          decoration: const InputDecoration(
+                            hintText: 'Masukkan Tugas',
+                            contentPadding: EdgeInsets.symmetric(
+                              horizontal: 10,
+                            ),
+                            border: InputBorder.none,
+                          ),
+                          onChanged: (_) {
+                            if (taskError != null) {
+                              setState(() {
+                                taskError = null;
+                              });
+                            }
+                          },
+                        ),
+                      ),
+                    ),
+
+                    const SizedBox(width: 12),
